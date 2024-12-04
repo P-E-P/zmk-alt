@@ -10,6 +10,15 @@
 #include <dt-bindings/zmk/mouse.h>
 
 / {
+    behaviors {
+        caps_word_enhanced_behavior: caps_word_enhanced_behavior {
+            compatible = "zmk,behavior-caps-word";
+            label = "CAPS_WORD_ENHANCED_BEHAVIOR";
+            #binding-cells = <0>;
+            continue-list = <UNDERSCORE MINUS>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -36,10 +45,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp KP_DIVIDE  &kp N7        &kp N8        &kp N9        &kp KP_MULTIPLY    &kp PAGE_UP    &kp HOME  &trans          &trans     &kp END   &trans
-&trans  &kp KP_DOT     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS           &kp PAGE_DOWN  &trans    &kp UP          &trans     &trans    &kp DEL
-&trans  &kp N0         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS          &mkp MB4       &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &mkp MB5  &trans
-                                     &kp LGUI      &kp TAB       &kp SPACE          &kp RET        &trans    &trans
+&kp ESCAPE  &kp KP_DIVIDE  &kp N7        &kp N8        &kp N9        &kp KP_MULTIPLY    &kp PAGE_UP    &kp HOME  &trans          &kp END    &kp CAPSLOCK                  &kp BACKSPACE
+&trans      &kp KP_DOT     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS           &kp PAGE_DOWN  &trans    &kp UP          &trans     &caps_word_enhanced_behavior  &kp DEL
+&trans      &kp N0         &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS          &mkp MB4       &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &mkp MB5                      &kp RIGHT_ALT
+                                         &kp LGUI      &kp TAB       &kp SPACE          &trans         &trans    &trans
             >;
         };
 
@@ -51,10 +60,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &trans
-&trans  &trans    &trans  &trans    &trans    &kp TILDE    &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &trans
-                          &kp LGUI  &kp TAB   &kp SPACE    &kp RET    &trans     &trans
+&kp ESCAPE        &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BACKSPACE
+&trans            &trans    &trans  &trans    &trans    &kp TILDE    &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LEFT_CONTROL  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp RIGHT_ALT
+                                    &kp LGUI  &kp TAB   &kp SPACE    &trans     &trans     &trans
             >;
         };
 
